@@ -7,6 +7,9 @@ window.onload = function() {
     let applee;
     let ctx;
     // Determine the variables so that they can be used by both functions
+    let widthInBlocks = canvasWidth / blockSize;
+    let heightInBlocks = canvasHeight / blockSize;
+    // Convert pixels to block
 
     init();
     // Call the function to run the initialization of the game
@@ -31,11 +34,15 @@ window.onload = function() {
     // Function that allows you to create the movement, initialize the canvas
 
     function refreshCanvas() {
-        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         snakee.advance();
-        snakee.draw();
-        applee.draw();
-        setTimeout(refreshCanvas, delay);
+        if (snakee.checkCollision()) {
+            // GAME OVER
+        } else {
+            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+            snakee.draw();
+            applee.draw();
+            setTimeout(refreshCanvas, delay);
+        }
     }
     // Set a time limit after which the initialization will take place
 
@@ -100,6 +107,32 @@ window.onload = function() {
                 this.direction = newDirection;
             } //Allow to change direction if the travel rules are respected
         };
+        this.checkCollision = function() {
+            let wallCollision = false;
+            let snakeCollision = false;
+            let head = this.body[0];
+            let rest = this.body.slice(1);
+            let snakeX = head[0];
+            var snakeY = head[1];
+            let minX = 0;
+            let minY = 0;
+            let maxX = widthInBlocks - 1;
+            let maxY = heightInBlocks - 1;
+            let isNotBetweenHorizontalWalls = snakeX < minX || snakeX > maxX;
+            let isNotBetweenVerticalWalls = snakeY < minY || snakeY > maxY;
+
+            if (isNotBetweenHorizontalWalls || isNotBetweenVerticalWalls) {
+                wallCollision = true;
+            }
+
+            for (let i = 0; i < rest.length; i++) {
+                if (snakeX === rest[i][0] && snakeY === rest[i][1]) {
+                    snakeCollision = true;
+                }
+            }
+            return wallCollision || snakeCollision;
+
+        }
 
 
     }
