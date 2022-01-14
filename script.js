@@ -16,10 +16,10 @@ window.onload = function() {
         var canvas = document.createElement('canvas');
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
-        canvas.style.border = '30px black solid';
+        canvas.style.border = '30px hsl(235, 21%, 21%) solid';
         canvas.style.margin = '50px auto';
         canvas.style.display = 'block';
-        canvas.style.backgroundColor = 'hsl(218, 23%, 21%)';
+        canvas.style.backgroundColor = 'RosyBrown';
         document.body.appendChild(canvas);
         // Creation of the frame with the canvas method
         ctx = canvas.getContext('2d');
@@ -59,19 +59,19 @@ window.onload = function() {
 
     function gameOver() {
         ctx.save();
-        ctx.font = "bold 70px sans-serif";
-        ctx.fillStyle = "#000";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.strokeStyle = "white";
+        ctx.font = 'bold 70px "Gloria Hallelujah"';
+        ctx.fillStyle = 'hsl(235, 21%, 21%)';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.strokeStyle = 'white';
         ctx.lineWidth = 5;
         var centreX = canvasWidth / 2;
         var centreY = canvasHeight / 2;
-        ctx.strokeText("Game Over", centreX, centreY - 180);
-        ctx.fillText("Game Over", centreX, centreY - 180);
-        ctx.font = "bold 30px sans-serif";
-        ctx.strokeText("Appuyer sur la touche Espace pour rejouer", centreX, centreY - 120);
-        ctx.fillText("Appuyer sur la touche Espace pour rejouer", centreX, centreY - 120);
+        ctx.strokeText('Game Over', centreX, centreY - 180);
+        ctx.fillText('Game Over', centreX, centreY - 180);
+        ctx.font = 'bold 30px "The Girl Next Door"';
+        ctx.strokeText('Appuyer sur la touche Espace pour rejouer', centreX, centreY - 120);
+        ctx.fillText('Appuyer sur la touche Espace pour rejouer', centreX, centreY - 120);
         ctx.restore();
     }
 
@@ -82,7 +82,7 @@ window.onload = function() {
             [4, 4],
             [3, 4],
             [2, 4]
-        ], "right");
+        ], 'right');
         applee = new Apple([10, 10]);
         score = 0;
         clearTimeout(timeOut);
@@ -91,10 +91,10 @@ window.onload = function() {
 
     function drawScore() {
         ctx.save();
-        ctx.font = "bold 200px sans-serif";
-        ctx.fillStyle = "gray";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
+        ctx.font = 'bold 150px "Press Start 2P"';
+        ctx.fillStyle = 'LightGrey';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
         var centreX = canvasWidth / 2;
         var centreY = canvasHeight / 2;
         ctx.fillText(score.toString(), centreX, centreY);
@@ -114,7 +114,7 @@ window.onload = function() {
 
         this.draw = function() {
             ctx.save();
-            ctx.fillStyle = '#0f056b';
+            ctx.fillStyle = '#e50914';
             for (var i = 0; i < this.body.length; i++) {
                 drawBlock(ctx, this.body[i]);
             }
@@ -203,7 +203,7 @@ window.onload = function() {
 
         this.draw = function() {
             ctx.save(); // Permet de sauvegarder les anciennes configurations... 
-            ctx.fillStyle = '#72bf08'; // ...puis d'appliquer le nouveau style... 
+            ctx.fillStyle = '#1db954'; // ...puis d'appliquer le nouveau style... 
             ctx.beginPath();
             var radius = blockSize / 2;
             var x = this.position[0] * blockSize + radius;
