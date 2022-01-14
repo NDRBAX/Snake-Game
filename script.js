@@ -6,6 +6,10 @@ window.onload = function() {
     var snakee;
     var applee;
     var ctx;
+    var soundGameOver;
+    var soundEatApple;
+    var soundSnakeRun;
+
     // Determine the variables so that they can be used by both functions
     var widthInBlocks = canvasWidth / blockSize;
     var heightInBlocks = canvasHeight / blockSize;
@@ -59,6 +63,7 @@ window.onload = function() {
 
     function gameOver() {
         ctx.save();
+        soundGameOver = new sound('sound-effect/game-over.mp3');
         ctx.font = 'bold 70px "Gloria Hallelujah"';
         ctx.fillStyle = 'hsl(235, 21%, 21%)';
         ctx.textAlign = 'center';
@@ -76,6 +81,7 @@ window.onload = function() {
     }
 
     function restart() {
+
         snakee = new Snake([
             [6, 4],
             [5, 4],
@@ -111,7 +117,6 @@ window.onload = function() {
         this.body = body;
         this.direction = direction;
         this.ateApple = false;
-
         this.draw = function() {
             ctx.save();
             ctx.fillStyle = '#e50914';
@@ -191,10 +196,12 @@ window.onload = function() {
 
         this.isEatingApple = function(appleToEat) {
             var head = this.body[0];
-            if (head[0] === appleToEat.position[0] && head[1] === appleToEat.position[1])
+            if (head[0] === appleToEat.position[0] && head[1] === appleToEat.position[1]) {
+                soundEatApple = new sound('sound-effect/retro-notification.mp3');
                 return true;
-            else
-                return false;
+            } else {
+                return false
+            }
         }
     } // Creation of the snake prototype function
 
@@ -227,6 +234,22 @@ window.onload = function() {
             return isOnSnake;
         };
     } // Creation of the apple protoype function
+
+    function sound(src) {
+        this.sound = document.createElement('audio');
+        this.sound.src = src;
+        this.sound.setAttribute('preload', 'auto');
+        this.sound.setAttribute('controls', 'none');
+        this.sound.setAttribute('autoplay', 'true');
+        this.sound.style.display = 'none';
+        document.body.appendChild(this.sound);
+        this.play = function() {
+            this.sound.play();
+        }
+        this.stop = function() {
+            this.sound.pause();
+        }
+    }
 
     document.onkeydown = function handleKeyDown(e) {
         var key = e.keyCode;
