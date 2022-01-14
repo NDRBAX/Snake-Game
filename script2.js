@@ -9,9 +9,9 @@ window.onload = function() {
     // Determine the variables so that they can be used by both functions
     let widthInBlocks = canvasWidth / blockSize;
     let heightInBlocks = canvasHeight / blockSize;
-
+    // Convert pixels to block
     init();
-
+    // Call the function to run the initialization of the game
     function init() {
         var canvas = document.createElement('canvas');
         canvas.width = canvasWidth;
@@ -21,7 +21,9 @@ window.onload = function() {
         canvas.style.display = "block";
         canvas.style.backgroundColor = "#ddd";
         document.body.appendChild(canvas);
+        // Creation of the frame with the canvas method
         ctx = canvas.getContext('2d');
+        // Define the context to be able to draw in the canvas
         snakee = new Snake([
             [6, 4],
             [5, 4],
@@ -227,7 +229,6 @@ window.onload = function() {
             }
             return isOnSnake;
         };
-
     }
 
     document.onkeydown = function handleKeyDown(e) {
