@@ -9,6 +9,7 @@ window.onload = function() {
     var soundGameOver;
     var soundEatApple;
     var soundSnakeRun;
+    var timeOut;
 
     // Determine the variables so that they can be used by both functions
     var widthInBlocks = canvasWidth / blockSize;
