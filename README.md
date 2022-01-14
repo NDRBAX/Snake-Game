@@ -32,11 +32,15 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+Snake is a mini video game in which the player controls a snake that grows as it eats apples. 
+
+It was in 1976 that the game of the snake appeared for the first time and was then only available on arcade under the name Blockhade.
 
 ## 🎈 Usage <a name="usage"></a>
 
-Add notes about how to use the system.
+The snake moves forward and its head must not touch the walls as well as its own body.
+
+To play you must use the 'up', 'down', 'right' and 'left' arrows and the space key to restart the game.
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
