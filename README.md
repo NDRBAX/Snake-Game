@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="images/logo.png" alt="Project Logo"></a>
+ <img width=100px height=200px src="images/logo.png" alt="Project Logo"></a>
 </p>
 
 <h3 align="center">Snake-Game</h3>
